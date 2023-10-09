@@ -127,6 +127,11 @@ table {
   border-collapse: collapse;
   border-spacing: 0;
 }
+a {
+  color: #000;
+  text-decoration: none;
+  font-size: 18px;
+}
 /** end reset css**/
 body {
   max-width: 1140px;
@@ -169,12 +174,14 @@ nav ul {
   align-items: center;
   list-style-type: none;
 }
-nav li {
+nav li,
+nav a {
   padding: 0 10px;
-  font-size: 1.2em;
+  font-size: 17px !important;
 }
 
-li:hover {
+li:hover,
+nav a:hover {
   color: #b1663c;
 }
 #introduction {
@@ -283,10 +290,49 @@ input[type="submit"] {
   width: 180px;
   text-align: center;
   border-radius: 60px;
+  height: 36px;
+  cursor: pointer;
 }
 
 footer nav ul {
   display: flex;
   justify-content: flex-end;
   margin: 2em;
+}
+
+.login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20vh 0 30vh 0;
+}
+.login h2 {
+  margin-bottom: 1em;
+}
+.login form {
+  display: flex;
+  flex-direction: column;
+}
+.login .form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.login input[type="email"],
+.login input[type="password"] {
+  height: 50px;
+  width: 400px;
+  font-size: 1.2em;
+  border: none;
+  box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+  margin-bottom: 1em;
+}
+.login input[type="email"] {
+  margin-bottom: 40px;
+}
+.login a {
+  color: #3d3d3d;
+  font-family: Work Sans;
+  font-size: 14px;
+  text-decoration-line: underline;
 }
