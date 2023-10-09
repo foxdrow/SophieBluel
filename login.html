@@ -13,14 +13,14 @@
     <meta name="description" content="" />
     <link rel="stylesheet" href="./assets/style.css" />
   </head>
-  <body>
+  <body id="login-page">
     <header>
       <h1>Sophie Bluel <span>Architecte d'inteérieur</span></h1>
       <nav>
         <ul>
-          <li>projets</li>
-          <li>contact</li>
-          <li><a href="login.html">login</a></li>
+          <li><a href="index.html#portfolio"> projets</a></li>
+          <li><a href="index.html#contact">contact</a></li>
+          <li><a class="selected" href="login.html">login</a></li>
           <li><img src="./assets/icons/instagram.png" alt="Instagram" /></li>
         </ul>
       </nav>
@@ -36,10 +36,10 @@
           <label for="password">Mot de passe</label>
           <input type="password" name="password" id="password" required />
         </div>
+        <p id="error"></p>
         <div class="form-group">
           <input id="loginButton" type="submit" value="Se connecter" />
         </div>
-        <p id="error"></p>
       </form>
       <a href="forgot-password.html">Mot de passe oublié</a>
     </section>
