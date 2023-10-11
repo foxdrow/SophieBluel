@@ -18,6 +18,18 @@
       <img src="assets/icons/editing-icon.svg" alt="Admin" />
       <p>Mode édition</p>
     </div>
+    <div class="modal-container">
+      <div class="modal">
+        <script>
+
+        </script>
+      </div>
+    </div>
+    <script>
+      if (localStorage.getItem("token")) {
+        document.querySelector(".admin-panel-bar").style.display = "flex";
+      }
+    </script>
     <div class="main-container">
       <header>
         <h1>Sophie Bluel <span>Architecte d'inteérieur</span></h1>
