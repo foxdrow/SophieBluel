@@ -1,6 +1,4 @@
-let modalContainer = document.querySelector(".modal-container");
-let modal = document.querySelector(".modal");
-let modalCloseX = document.querySelector(".modal-close i");
+let modalCloseX = document.querySelector(".modal-close .x1");
 
 let modalContainerMain = document.querySelector(".modal-container-main");
 let modalGallery = document.querySelector(".modal-gallery");
@@ -9,12 +7,12 @@ let modalButtonAdd = document.querySelector(".modal-container-main-btn");
 let modalContainerAdd = document.querySelector(".modal-container-add");
 
 modalCloseX.addEventListener("click", () => {
-  modalContainer.style.display = "none";
+  modalContainerMain.style.display = "none";
 });
 
-modalContainer.addEventListener("click", (event) => {
-  if (event.target === modalContainer) {
-    modalContainer.style.display = "none";
+modalContainerMain.addEventListener("click", (event) => {
+  if (event.target === modalContainerMain) {
+    modalContainerMain.style.display = "none";
   }
 });
 

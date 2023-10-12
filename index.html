@@ -31,7 +31,9 @@
     </div>
     <div class="modal-container modal-container-main">
       <div class="modal">
-        <div class="modal-close"><i class="fa-solid fa-xmark fa-xl"></i></div>
+        <div class="modal-close">
+          <i class="fa-solid fa-xmark fa-xl x1"></i>
+        </div>
         <h3>Galerie photo</h3>
         <div class="modal-gallery"></div>
         <div class="separator"></div>
@@ -42,7 +44,7 @@
       <div class="modal">
         <div class="modal-close">
           <i class="fa-solid fa-arrow-left fa-xl"></i>
-          <i class="fa-solid fa-xmark fa-xl"></i>
+          <i class="fa-solid fa-xmark fa-xl x2"></i>
         </div>
         <h3>Ajout photo</h3>
         <form
@@ -90,7 +92,9 @@
           <div class="add-file-text">
             <label for="file-categorie">Categorie</label>
             <select name="category" id="file-categorie">
-              <option></option>
+              <option value="1">Objets</option>
+              <option value="2">Appartements</option>
+              <option value="3">Hôtels & restaurants</option>
             </select>
           </div>
           <div class="separator"></div>
