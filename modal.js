@@ -1,7 +1,12 @@
 let modalContainer = document.querySelector(".modal-container");
 let modal = document.querySelector(".modal");
-let modalGallery = document.querySelector(".modal-gallery");
 let modalCloseX = document.querySelector(".modal-close i");
+
+let modalContainerMain = document.querySelector(".modal-container-main");
+let modalGallery = document.querySelector(".modal-gallery");
+let modalButtonAdd = document.querySelector(".modal-container-main-btn");
+
+let modalContainerAdd = document.querySelector(".modal-container-add");
 
 modalCloseX.addEventListener("click", () => {
   modalContainer.style.display = "none";
@@ -11,6 +16,11 @@ modalContainer.addEventListener("click", (event) => {
   if (event.target === modalContainer) {
     modalContainer.style.display = "none";
   }
+});
+
+modalButtonAdd.addEventListener("click", () => {
+  modalContainerMain.style.display = "none";
+  modalContainerAdd.style.display = "block";
 });
 
 let fetchWorks = () => {
@@ -44,4 +54,3 @@ let fetchWorks = () => {
     });
 };
 fetchWorks();
-console.log("test");
