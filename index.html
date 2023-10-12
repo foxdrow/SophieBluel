@@ -12,6 +12,16 @@
     />
     <meta name="description" content="" />
     <link rel="stylesheet" href="./assets/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+      integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <script src="display-works.js" defer></script>
+    <script src="admin-panel.js" defer></script>
+    <script src="modal.js" defer></script>
   </head>
   <body>
     <div class="admin-panel-bar">
@@ -20,16 +30,13 @@
     </div>
     <div class="modal-container">
       <div class="modal">
-        <script>
-
-        </script>
+        <div class="modal-close"><i class="fa-solid fa-xmark fa-xl"></i></div>
+        <h3>Galerie photo</h3>
+        <div class="modal-gallery"></div>
+        <div class="separator"></div>
+        <button>Ajouter une photo</button>
       </div>
     </div>
-    <script>
-      if (localStorage.getItem("token")) {
-        document.querySelector(".admin-panel-bar").style.display = "flex";
-      }
-    </script>
     <div class="main-container">
       <header>
         <h1>Sophie Bluel <span>Architecte d'inteérieur</span></h1>
@@ -78,39 +85,7 @@
               Hôtels & restaurants
             </button>
           </div>
-          <div class="gallery">
-            <script>
-              let getWorks = (category = 0) => {
-                fetch("http://localhost:5678/api/works")
-                  .then((response) => response.json())
-                  .then((data) => {
-                    data.forEach((work) => {
-                      if (
-                        (category !== 0 && work.category.id === category) ||
-                        category === 0
-                      ) {
-                        const figure = document.createElement("figure");
-                        const img = document.createElement("img");
-                        img.src = work.imageUrl;
-                        img.alt = work.title;
-                        const figcaption = document.createElement("figcaption");
-                        figcaption.textContent = work.title;
-                        figure.appendChild(img);
-                        figure.appendChild(figcaption);
-                        document.querySelector(".gallery").appendChild(figure);
-                      }
-                    });
-                  });
-              };
-              getWorks();
-              document.querySelectorAll(".filter").forEach((filter) => {
-                filter.addEventListener("click", (event) => {
-                  document.querySelector(".gallery").innerHTML = "";
-                  getWorks(parseInt(event.target.dataset.category));
-                });
-              });
-            </script>
-          </div>
+          <div class="gallery"></div>
         </section>
         <section id="contact">
           <h2>Contact</h2>
