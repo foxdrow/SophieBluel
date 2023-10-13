@@ -413,7 +413,9 @@ footer nav ul {
   flex-wrap: wrap;
   gap: 25px 6px;
   margin: 0 107px;
+  height: 350px;
   min-height: 350px;
+  max-height: 350px;
   overflow: scroll;
   overflow: overlay;
 }
@@ -490,10 +492,6 @@ footer nav ul {
   margin-bottom: 15px;
   color: #b9c5cc;
 }
-.modal-container-add .modal .add-form .add-file-zone img {
-  height: 100px;
-  margin: 5px;
-}
 .modal-container-add .modal .add-form .add-file-zone label {
   font-size: 16px;
   color: #306685;
@@ -537,4 +535,12 @@ footer nav ul {
   display: flex;
   flex-direction: column;
   align-items: left;
+}
+.errorChamp {
+  color: red;
+  font-size: 14px;
+  font-family: Work Sans;
+  font-weight: 600;
+  margin: 0;
+  height: 0px;
 }

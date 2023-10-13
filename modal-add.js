@@ -6,6 +6,7 @@ const fileZone = document.querySelector(".add-file-zone");
 const fileInput = document.getElementById("add-file");
 const titleInput = document.getElementById("file-title");
 const categorieInput = document.getElementById("file-categorie");
+const errorChamp = document.querySelector(".errorChamp");
 
 modalCloseX2.addEventListener("click", () => {
   modalContainerAdd.style.display = "none";
@@ -39,14 +40,12 @@ fileInput.addEventListener("change", () => {
   };
 });
 fileZone.addEventListener("click", () => {
-  fileZone.querySelector("img").remove();
+  fileZone.querySelector(".uploaded-image").remove();
   fileZone.querySelector("i").style.display = "block";
   fileZone.querySelector("label").style.display = "block";
   fileZone.querySelector("p").style.display = "block";
   fileInput.value = "";
 });
-
-
 
 form.addEventListener("submit", (event) => {
   event.preventDefault();
@@ -54,10 +53,24 @@ form.addEventListener("submit", (event) => {
 
   const formData = new FormData(form);
 
-  if (fileInput.value === "" || titleInput.value === "" || categorieInput.value === "") {
-    alert("Please select a file");
+  if (
+    fileInput.value === "" ||
+    titleInput.value === "" ||
+    categorieInput.value === ""
+  ) {
+    errorChamp.style.display = "block";
+    errorChamp.style.color = "red";
+    errorChamp.innerHTML = "Veillez remplir tous les champs";
     return;
   }
+  if (fileInput.files[0].size > 4000000) {
+    errorChamp.style.display = "block";
+    errorChamp.style.color = "red";
+    errorChamp.innerHTML = "La taille de l'image est trop grande";
+    return;
+  }
+
+  errorChamp.style.display = "none";
 
   let request = {
     method: "POST",
@@ -71,12 +84,17 @@ form.addEventListener("submit", (event) => {
     .then((response) => response.json())
     .then((data) => {
       console.log(data);
-      modalContainerAdd.style.display = "none";
-      modalContainerMain.style.display = "block";
       document.querySelector(".gallery").innerHTML = "";
       getWorks();
       document.querySelector(".modal-gallery").innerHTML = "";
       fetchWorks();
       form.reset();
+      errorChamp.style.display = "block";
+      errorChamp.style.color = "green";
+      errorChamp.innerHTML = "Votre fichier a été ajouté avec succès";
+      setTimeout(() => {
+        modalContainerAdd.style.display = "none";
+        modalContainerMain.style.display = "block";
+      }, 2000);
     });
 });
