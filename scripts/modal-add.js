@@ -93,6 +93,10 @@ form.addEventListener("submit", (event) => {
       fetchWorks();
       form.reset();
       resetFormFile();
+      document.querySelectorAll(".filter").forEach((filter) => {
+        filter.classList.remove("selected-filter");
+      });
+      document.querySelector(".filter").classList.add("selected-filter");
       errorChamp.style.display = "block";
       errorChamp.style.color = "green";
       errorChamp.innerHTML = "Votre fichier a été ajouté avec succès";

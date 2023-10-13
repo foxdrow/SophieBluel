@@ -414,9 +414,7 @@ footer nav ul {
   flex-wrap: wrap;
   gap: 25px 6px;
   margin: 0 107px;
-  height: 350px;
-  min-height: 350px;
-  max-height: 350px;
+  max-height: 420px;
   overflow: scroll;
   overflow: overlay;
 }
@@ -441,13 +439,18 @@ footer nav ul {
   cursor: pointer;
 }
 .modal .separator {
+  position: absolute;
+  bottom: 100px;
   width: 420px;
   align-self: center;
   height: 1px;
   background: #b3b3b3;
-  margin: 60px 0 40px 0;
+  /* margin: 60px 0 40px 0; */
 }
-.modal button {
+.modal button,
+.modal input[type="submit"] {
+  position: absolute;
+  bottom: 40px;
   width: 237px;
   height: 36px;
   background: #1d6154;
@@ -459,6 +462,7 @@ footer nav ul {
   align-self: center;
   cursor: pointer;
   border: none;
+  margin: 0;
 }
 
 /* ADD MODAL */
@@ -524,9 +528,6 @@ footer nav ul {
   border: none;
   box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
   margin-top: 10px;
-}
-.modal-container-add .modal .add-form .separator {
-  margin: 0;
 }
 .modal-container-add .modal .add-form .add-file-text {
   display: flex;
