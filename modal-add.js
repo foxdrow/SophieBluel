@@ -1,8 +1,26 @@
+let modalCloseX2 = document.querySelector(".modal-close .x2");
+let backArrow = document.querySelector(".fa-arrow-left");
+
+const form = document.forms.namedItem("add-form");
 const fileZone = document.querySelector(".add-file-zone");
 const fileInput = document.getElementById("add-file");
 const titleInput = document.getElementById("file-title");
 const categorieInput = document.getElementById("file-categorie");
-const form = document.forms.namedItem("add-form");
+
+modalCloseX2.addEventListener("click", () => {
+  modalContainerAdd.style.display = "none";
+});
+
+modalContainerAdd.addEventListener("click", (event) => {
+  if (event.target === modalContainerAdd) {
+    modalContainerAdd.style.display = "none";
+  }
+});
+
+backArrow.addEventListener("click", () => {
+  modalContainerAdd.style.display = "none";
+  modalContainerMain.style.display = "block";
+});
 
 fileInput.addEventListener("change", () => {
   const file = fileInput.files[0];
@@ -20,11 +38,39 @@ fileInput.addEventListener("change", () => {
     fileZone.prepend(imageElement);
   };
 });
-// reset the image zone and the input when the user click on the file zone
 fileZone.addEventListener("click", () => {
   fileZone.querySelector("img").remove();
   fileZone.querySelector("i").style.display = "block";
   fileZone.querySelector("label").style.display = "block";
   fileZone.querySelector("p").style.display = "block";
   fileInput.value = "";
+});
+
+
+form.addEventListener("submit", (event) => {
+  event.preventDefault();
+  console.log("submit");
+
+  const formData = new FormData(form);
+
+  let request = {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
+    },
+    body: formData,
+  };
+
+  fetch("http://localhost:5678/api/works", request)
+    .then((response) => response.json())
+    .then((data) => {
+      console.log(data);
+      modalContainerAdd.style.display = "none";
+      modalContainerMain.style.display = "block";
+      document.querySelector(".gallery").innerHTML = "";
+      getWorks();
+      document.querySelector(".modal-gallery").innerHTML = "";
+      fetchWorks();
+      form.reset();
+    });
 });

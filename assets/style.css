@@ -413,6 +413,9 @@ footer nav ul {
   flex-wrap: wrap;
   gap: 25px 6px;
   margin: 0 107px;
+  min-height: 350px;
+  overflow: scroll;
+  overflow: overlay;
 }
 .modal-gallery figure {
   width: 78px;

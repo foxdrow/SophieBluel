@@ -40,6 +40,8 @@ let fetchWorks = () => {
           }).then((response) => {
             if (response.ok) {
               figure.remove();
+              document.querySelector(".gallery").innerHTML = "";
+              getWorks();
             }
           });
         });
