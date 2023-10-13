@@ -5,7 +5,7 @@ const form = document.forms.namedItem("add-form");
 const fileZone = document.querySelector(".add-file-zone");
 const fileInput = document.getElementById("add-file");
 const titleInput = document.getElementById("file-title");
-const categorieInput = document.getElementById("file-categorie");
+const categoriesInput = document.getElementById("file-categories");
 const errorChamp = document.querySelector(".errorChamp");
 
 modalCloseX2.addEventListener("click", () => {
@@ -39,12 +39,15 @@ fileInput.addEventListener("change", () => {
     fileZone.prepend(imageElement);
   };
 });
-fileZone.addEventListener("click", () => {
+let resetFormFile = () => {
   fileZone.querySelector(".uploaded-image").remove();
   fileZone.querySelector("i").style.display = "block";
   fileZone.querySelector("label").style.display = "block";
   fileZone.querySelector("p").style.display = "block";
   fileInput.value = "";
+};
+fileZone.addEventListener("click", () => {
+  resetFormFile();
 });
 
 form.addEventListener("submit", (event) => {
@@ -56,7 +59,7 @@ form.addEventListener("submit", (event) => {
   if (
     fileInput.value === "" ||
     titleInput.value === "" ||
-    categorieInput.value === ""
+    categoriesInput.value === ""
   ) {
     errorChamp.style.display = "block";
     errorChamp.style.color = "red";
@@ -89,12 +92,14 @@ form.addEventListener("submit", (event) => {
       document.querySelector(".modal-gallery").innerHTML = "";
       fetchWorks();
       form.reset();
+      resetFormFile();
       errorChamp.style.display = "block";
       errorChamp.style.color = "green";
       errorChamp.innerHTML = "Votre fichier a été ajouté avec succès";
       setTimeout(() => {
         modalContainerAdd.style.display = "none";
         modalContainerMain.style.display = "block";
-      }, 2000);
+        errorChamp.style.display = "none";
+      }, 1000);
     });
 });

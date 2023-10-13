@@ -24,6 +24,10 @@ let getWorks = (category = 0) => {
 getWorks();
 document.querySelectorAll(".filter").forEach((filter) => {
   filter.addEventListener("click", (event) => {
+    document.querySelectorAll(".filter").forEach((filter) => {
+      filter.classList.remove("selected-filter");
+    });
+    event.target.classList.add("selected-filter");
     document.querySelector(".gallery").innerHTML = "";
     getWorks(parseInt(event.target.dataset.category));
   });
