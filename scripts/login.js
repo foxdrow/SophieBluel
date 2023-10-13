@@ -37,7 +37,7 @@ function login() {
     .then((data) => {
       if (data.message === "user not found" || data.error) {
         document.getElementById("error").innerHTML =
-          "Email ou mot de passe incorrect";
+          "Erreur dans l'identifiant ou le mot de passe";
         return;
       }
       localStorage.setItem("token", data.token);
@@ -47,7 +47,7 @@ function login() {
     })
     .catch((error) => {
       document.getElementById("error").innerHTML =
-        "Email ou mot de passe incorrect";
+        "Erreur dans l'identifiant ou le mot de passe";
     });
 }
 document.getElementById("loginButton").addEventListener("click", login);
