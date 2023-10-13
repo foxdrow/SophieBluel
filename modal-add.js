@@ -47,11 +47,17 @@ fileZone.addEventListener("click", () => {
 });
 
 
+
 form.addEventListener("submit", (event) => {
   event.preventDefault();
   console.log("submit");
 
   const formData = new FormData(form);
+
+  if (fileInput.value === "" || titleInput.value === "" || categorieInput.value === "") {
+    alert("Please select a file");
+    return;
+  }
 
   let request = {
     method: "POST",
