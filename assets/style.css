@@ -186,6 +186,10 @@ li:hover,
 nav a:hover {
   color: #b1663c;
 }
+.logout {
+  display: none;
+  cursor: pointer;
+}
 #introduction {
   display: flex;
   align-items: center;
@@ -303,6 +307,7 @@ footer nav ul {
   justify-content: flex-end;
   margin: 2em;
 }
+/* LOGIN PAGE */
 
 #login-page {
   background: #fffef8;
