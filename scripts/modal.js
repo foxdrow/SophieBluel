@@ -42,6 +42,12 @@ let fetchWorks = () => {
               figure.remove();
               document.querySelector(".gallery").innerHTML = "";
               getWorks();
+              document.querySelectorAll(".filter").forEach((filter) => {
+                filter.classList.remove("selected-filter");
+              });
+              document
+                .querySelector(".filter")
+                .classList.add("selected-filter");
             }
           });
         });

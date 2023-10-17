@@ -1,10 +1,8 @@
-document
-  .getElementById("loginForm")
-  .addEventListener("submit", function (event) {
-    event.preventDefault();
-  });
+document.getElementById("loginForm").addEventListener("submit", (event) => {
+  event.preventDefault();
+});
 
-function login() {
+let login = () => {
   const email = document.getElementById("email").value;
   const password = document.getElementById("password").value;
 
@@ -18,12 +16,7 @@ function login() {
     document.getElementById("error").innerHTML = "Email invalide";
     return;
   }
-
-  const body = {
-    email: email,
-    password: password,
-  };
-
+  const body = { email: email, password: password };
   const request = {
     method: "POST",
     headers: {
@@ -49,5 +42,5 @@ function login() {
       document.getElementById("error").innerHTML =
         "Erreur dans l'identifiant ou le mot de passe";
     });
-}
+};
 document.getElementById("loginButton").addEventListener("click", login);
