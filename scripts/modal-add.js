@@ -50,7 +50,7 @@ fileZone.addEventListener("click", () => {
   resetFormFile();
 });
 
-form.addEventListener("submit", (event) => {
+form.addEventListener("submit", async (event) => {
   event.preventDefault();
   console.log("submit");
 
@@ -83,27 +83,25 @@ form.addEventListener("submit", (event) => {
     body: formData,
   };
 
-  fetch("http://localhost:5678/api/works", request)
-    .then((response) => response.json())
-    .then((data) => {
-      console.log(data);
-      document.querySelector(".gallery").innerHTML = "";
-      getWorks();
-      document.querySelector(".modal-gallery").innerHTML = "";
-      fetchWorks();
-      form.reset();
-      resetFormFile();
-      document.querySelectorAll(".filter").forEach((filter) => {
-        filter.classList.remove("selected-filter");
-      });
-      document.querySelector(".filter").classList.add("selected-filter");
-      errorChamp.style.display = "block";
-      errorChamp.style.color = "green";
-      errorChamp.innerHTML = "Votre fichier a été ajouté avec succès";
-      setTimeout(() => {
-        modalContainerAdd.style.display = "none";
-        modalContainerMain.style.display = "block";
-        errorChamp.style.display = "none";
-      }, 1000);
-    });
+  let response = await fetch("http://localhost:5678/api/works", request);
+  let data = await response.json();
+  console.log(data);
+  document.querySelector(".gallery").innerHTML = "";
+  getWorks();
+  document.querySelector(".modal-gallery").innerHTML = "";
+  fetchWorks();
+  form.reset();
+  resetFormFile();
+  document.querySelectorAll(".filter").forEach((filter) => {
+    filter.classList.remove("selected-filter");
+  });
+  document.querySelector(".filter").classList.add("selected-filter");
+  errorChamp.style.display = "block";
+  errorChamp.style.color = "green";
+  errorChamp.innerHTML = "Votre fichier a été ajouté avec succès";
+  setTimeout(() => {
+    modalContainerAdd.style.display = "none";
+    modalContainerMain.style.display = "block";
+    errorChamp.style.display = "none";
+  }, 1000);
 });

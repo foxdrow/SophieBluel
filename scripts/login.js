@@ -2,7 +2,7 @@ document.getElementById("loginForm").addEventListener("submit", (event) => {
   event.preventDefault();
 });
 
-let login = () => {
+let login = async () => {
   const email = document.getElementById("email").value;
   const password = document.getElementById("password").value;
 
@@ -24,23 +24,24 @@ let login = () => {
     },
     body: JSON.stringify(body),
   };
-
-  fetch("http://localhost:5678/api/users/login", request)
-    .then((response) => response.json())
-    .then((data) => {
-      if (data.message === "user not found" || data.error) {
-        document.getElementById("error").innerHTML =
-          "Erreur dans l'identifiant ou le mot de passe";
-        return;
-      }
-      localStorage.setItem("token", data.token);
-      localStorage.setItem("userId", data.userId);
-
-      window.location.href = "/";
-    })
-    .catch((error) => {
+  try {
+    let response = await fetch(
+      "http://localhost:5678/api/users/login",
+      request
+    );
+    let data = await response.json();
+    if (data.message === "user not found" || data.error) {
       document.getElementById("error").innerHTML =
         "Erreur dans l'identifiant ou le mot de passe";
-    });
+      return;
+    }
+    localStorage.setItem("token", data.token);
+    localStorage.setItem("userId", data.userId);
+
+    window.location.href = "/";
+  } catch (error) {
+    document.getElementById("error").innerHTML =
+      "Erreur dans l'identifiant ou le mot de passe";
+  }
 };
 document.getElementById("loginButton").addEventListener("click", login);
