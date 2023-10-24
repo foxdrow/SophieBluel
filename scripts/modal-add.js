@@ -82,26 +82,65 @@ form.addEventListener("submit", async (event) => {
     },
     body: formData,
   };
+  try {
+    let response = await fetch("http://localhost:5678/api/works", request);
+    let data = await response.json();
+    console.log(data);
+    document.querySelector(".gallery").innerHTML = "";
+    getWorks();
+    document.querySelector(".modal-gallery").innerHTML = "";
+    fetchWorks();
+    form.reset();
+    resetFormFile();
+    document.querySelectorAll(".filter").forEach((filter) => {
+      filter.classList.remove("selected-filter");
+    });
+    document.querySelector(".filter").classList.add("selected-filter");
+    errorChamp.style.display = "block";
+    errorChamp.style.color = "green";
+    errorChamp.innerHTML = "Votre fichier a été ajouté avec succès";
+    setTimeout(() => {
+      modalContainerAdd.style.display = "none";
+      modalContainerMain.style.display = "block";
+      errorChamp.style.display = "none";
+    }, 1000);
+  } catch (error) {
+    console.error(error);
+  }
+});
 
-  let response = await fetch("http://localhost:5678/api/works", request);
-  let data = await response.json();
-  console.log(data);
-  document.querySelector(".gallery").innerHTML = "";
-  getWorks();
-  document.querySelector(".modal-gallery").innerHTML = "";
-  fetchWorks();
-  form.reset();
-  resetFormFile();
-  document.querySelectorAll(".filter").forEach((filter) => {
-    filter.classList.remove("selected-filter");
-  });
-  document.querySelector(".filter").classList.add("selected-filter");
-  errorChamp.style.display = "block";
-  errorChamp.style.color = "green";
-  errorChamp.innerHTML = "Votre fichier a été ajouté avec succès";
-  setTimeout(() => {
-    modalContainerAdd.style.display = "none";
-    modalContainerMain.style.display = "block";
-    errorChamp.style.display = "none";
-  }, 1000);
+titleInput.addEventListener("change", () => {
+  if (
+    fileInput.value !== "" &&
+    categoriesInput.value !== "0" &&
+    titleInput.value !== ""
+  ) {
+    document.querySelector(".add-modal-submit").style.background = "#1d6154";
+  } else {
+    document.querySelector(".add-modal-submit").style.background = "#a7a7a7";
+  }
+});
+
+categoriesInput.addEventListener("change", () => {
+  if (
+    fileInput.value !== "" &&
+    titleInput.value !== "" &&
+    categoriesInput.value !== "0"
+  ) {
+    document.querySelector(".add-modal-submit").style.background = "#1d6154";
+  } else {
+    document.querySelector(".add-modal-submit").style.background = "#a7a7a7";
+  }
+});
+
+fileInput.addEventListener("change", () => {
+  if (
+    titleInput.value !== "" &&
+    categoriesInput.value !== "0" &&
+    fileInput.value !== ""
+  ) {
+    document.querySelector(".add-modal-submit").style.background = "#1d6154";
+  } else {
+    document.querySelector(".add-modal-submit").style.background = "#a7a7a7";
+  }
 });

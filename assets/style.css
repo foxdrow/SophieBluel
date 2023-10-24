@@ -369,6 +369,16 @@ footer nav ul {
   cursor: pointer;
 }
 
+.edit-button {
+  display: none;
+  margin-bottom: 20px;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-left: 20px;
+  cursor: pointer;
+}
+
 /* MODAL GENERAL */
 
 .modal-container {
@@ -467,6 +477,10 @@ footer nav ul {
   cursor: pointer;
   border: none;
   margin: 0;
+}
+
+.modal input[type="submit"] {
+  background: #a7a7a7;
 }
 
 /* ADD MODAL */

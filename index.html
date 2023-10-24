@@ -48,10 +48,7 @@
           <i class="fa-solid fa-xmark fa-xl x2"></i>
         </div>
         <h3>Ajout photo</h3>
-        <form
-          class="add-form"
-          name="add-form"
-        >
+        <form class="add-form" name="add-form">
           <div class="add-file-zone">
             <i>
               <img src="./assets/icons/picture-icon.svg" alt="Upload" />
@@ -73,6 +70,7 @@
           <div class="add-file-text">
             <label for="file-categories">Categorie</label>
             <select name="category" id="file-categories">
+              <option value="0"></option>
               <option value="1">Objets</option>
               <option value="2">Appartements</option>
               <option value="3">Hôtels & restaurants</option>
@@ -80,7 +78,7 @@
           </div>
           <div class="separator"></div>
           <p class="errorChamp"></p>
-          <input type="submit" id="file-submit" value="Valider" />
+          <input class="add-modal-submit" type="submit" id="file-submit" value="Valider" />
         </form>
       </div>
     </div>
@@ -122,9 +120,19 @@
           </article>
         </section>
         <section id="portfolio">
-          <h2>Mes Projets</h2>
+          <div
+            style="display: flex; align-items: center; justify-content: center"
+          >
+            <h2>Mes Projets</h2>
+            <div class="edit-button">
+              <i class="fa-solid fa-edit fa-lg"></i>
+              <p>Modifier</p>
+            </div>
+          </div>
           <div class="filters">
-            <button class="filter selected-filter" data-category="0">Tous</button>
+            <button class="filter selected-filter" data-category="0">
+              Tous
+            </button>
             <button class="filter" data-category="1">Objets</button>
             <button class="filter" data-category="2">Appartements</button>
             <button class="filter" data-category="3">
